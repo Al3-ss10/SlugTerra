@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1"]
+[ext_resource type="Texture2D" path="res://resources/disc.tres" id="2"]
+[ext_resource type="Texture2D" path="res://resources/ring.tres" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/effects/hit_ring.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/burpy.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/infurnus.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/frostcrawler.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/thumpion.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/tormato.tscn" id="9"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 90.0
+
+[node name="Player" type="Area2D" groups=["player"]]
+collision_layer = 1
+collision_mask = 2
+script = ExtResource("1")
+hit_ring_scene = ExtResource("4")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Magnet" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Magnet"]
+shape = SubResource("CircleShape2D_2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MagnetRing" type="Sprite2D" parent="."]
+scale = Vector2(1.5625, 1.5625)
+modulate = Color(0.4, 0.9, 1, 0.12)
+texture = ExtResource("3")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Visual"]
+position = Vector2(0, 14)
+scale = Vector2(0.193548, 0.193548)
+modulate = Color(0, 0, 0, 0.3)
+texture = ExtResource("2")
+
+[node name="Blaster" type="Node2D" parent="Visual"]
+
+[node name="Barrel" type="Line2D" parent="Visual/Blaster"]
+points = PackedVector2Array(6, 0, 26, 0)
+width = 7.0
+default_color = Color(0.25, 0.25, 0.32, 1)
+
+[node name="Tip" type="Sprite2D" parent="Visual/Blaster"]
+position = Vector2(26, 0)
+scale = Vector2(0.0806452, 0.0806452)
+modulate = Color(0.85, 0.72, 0.29, 1)
+texture = ExtResource("2")
+
+[node name="Body" type="Sprite2D" parent="Visual"]
+position = Vector2(0, 4)
+scale = Vector2(0.193548, 0.193548)
+modulate = Color(0.2, 0.35, 0.75, 1)
+texture = ExtResource("2")
+
+[node name="Head" type="Sprite2D" parent="Visual"]
+position = Vector2(0, -9)
+scale = Vector2(0.129032, 0.129032)
+modulate = Color(0.95, 0.78, 0.62, 1)
+texture = ExtResource("2")
+
+[node name="Hair" type="Polygon2D" parent="Visual"]
+polygon = PackedVector2Array(-9, -11, -4, -22, 0, -16, 5, -23, 9, -11)
+color = Color(0.15, 0.1, 0.1, 1)
+
+[node name="EyeL" type="Sprite2D" parent="Visual"]
+position = Vector2(-3, -9)
+scale = Vector2(0.0258065, 0.0258065)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2")
+
+[node name="EyeR" type="Sprite2D" parent="Visual"]
+position = Vector2(3, -9)
+scale = Vector2(0.0258065, 0.0258065)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2")
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Burpy" parent="Weapons" instance=ExtResource("5")]
+level = 1
+
+[node name="Infurnus" parent="Weapons" instance=ExtResource("6")]
+
+[node name="Frostcrawler" parent="Weapons" instance=ExtResource("7")]
+
+[node name="Thumpion" parent="Weapons" instance=ExtResource("8")]
+
+[node name="Tormato" parent="Weapons" instance=ExtResource("9")]
+
+[connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]

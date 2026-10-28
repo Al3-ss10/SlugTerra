@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/decor.gd" id="1"]
+
+[node name="Rock" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Shape" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(14.4, 0, 10.1005, 9.35852, -4.00538, 10.4415, -13.7848, 5.46694, -15.4066, -4.92024, -3.2043, -9.82727, 10.1005, -9.35852)
+color = Color(0.13, 0.12, 0.17, 1)

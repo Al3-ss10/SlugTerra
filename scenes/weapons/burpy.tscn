@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/burpy.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/bullet.tscn" id="2"]
+
+[node name="Burpy" type="Node2D"]
+script = ExtResource("1")
+display_name = "Burpy"
+description = "Spara slug a raffica sul nemico più vicino"
+base_cooldown = 0.75
+projectile_scene = ExtResource("2")

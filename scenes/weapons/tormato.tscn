@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/tormato.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/tornado.tscn" id="2"]
+
+[node name="Tormato" type="Node2D"]
+script = ExtResource("1")
+display_name = "Tormato"
+description = "Tornado che orbitano attorno a te"
+base_cooldown = 1.0
+
+[node name="T1" parent="." instance=ExtResource("2")]
+
+[node name="T2" parent="." instance=ExtResource("2")]
+
+[node name="T3" parent="." instance=ExtResource("2")]
+
+[node name="T4" parent="." instance=ExtResource("2")]
+
+[node name="T5" parent="." instance=ExtResource("2")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/infurnus.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/fire.tscn" id="2"]
+
+[node name="Infurnus" type="Node2D"]
+script = ExtResource("1")
+display_name = "Infurnus"
+description = "Palla di fuoco che esplode a contatto"
+base_cooldown = 1.7
+projectile_scene = ExtResource("2")

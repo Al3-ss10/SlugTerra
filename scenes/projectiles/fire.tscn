@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1"]
+[ext_resource type="Texture2D" path="res://resources/disc.tres" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/effects/explosion_fire.tscn" id="3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 8.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1")
+explosion_scene = ExtResource("3")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Glow" type="Sprite2D" parent="."]
+scale = Vector2(0.319355, 0.319355)
+modulate = Color(1, 0.5, 0.1, 0.18)
+texture = ExtResource("2")
+
+[node name="Flame" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-23.4, 0, 0, -7.2, 0, 7.2)
+color = Color(1, 0.8, 0.2, 0.8)
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.145161, 0.145161)
+modulate = Color(1, 0.42, 0.16, 1)
+texture = ExtResource("2")
+
+[node name="EyeL" type="Sprite2D" parent="."]
+position = Vector2(-3.42, -2.25)
+scale = Vector2(0.0493548, 0.0493548)
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("2")
+
+[node name="EyeLPupil" type="Sprite2D" parent="."]
+position = Vector2(-3.42, -2.25)
+scale = Vector2(0.0222097, 0.0222097)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2")
+
+[node name="EyeR" type="Sprite2D" parent="."]
+position = Vector2(3.42, -2.25)
+scale = Vector2(0.0493548, 0.0493548)
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("2")
+
+[node name="EyeRPupil" type="Sprite2D" parent="."]
+position = Vector2(3.42, -2.25)
+scale = Vector2(0.0222097, 0.0222097)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
