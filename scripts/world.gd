@@ -1,6 +1,6 @@
 extends Node2D
 ## Mappa infinita. Il pavimento è un ParallaxLayer con texture di rumore ripetuta (nella scena);
-## qui si creano solo i Chunk di decorazioni attorno al giocatore.
+## qui si creano e si eliminano solo i Chunk di decorazioni attorno al giocatore.
 
 const CHUNK := 512
 
@@ -13,6 +13,7 @@ var chunks := {}
 
 func _ready() -> void:
 	world_seed = randi()
+	target = get_tree().get_first_node_in_group("player")
 
 
 func _process(_delta: float) -> void:
