@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqxd3u7dt8wgx"]
+
+[ext_resource type="Texture2D" uid="uid://bdsmxhwmywoiq" path="res://resources/Sprite/images.jpeg" id="1_asyna"]
+[ext_resource type="Script" uid="uid://bkt6fft7v1tcr" path="res://scripts/slug.gd" id="1_s4saa"]
+[ext_resource type="Texture2D" uid="uid://f14hkvtlmepu" path="res://resources/Sprite/Opening_Chiller.webp" id="3_urcm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4saa"]
+atlas = ExtResource("1_asyna")
+region = Rect2(0, 0, 360, 392)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urcm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4saa")
+}],
+"loop": true,
+"name": &"fuoco",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_urcm1")
+}],
+"loop": true,
+"name": &"ghiaccio",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_larbp"]
+
+[node name="Slug" type="Node2D"]
+script = ExtResource("1_s4saa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -3.999998)
+scale = Vector2(0.12291667, 0.122448996)
+sprite_frames = SubResource("SpriteFrames_urcm1")
+animation = &"ghiaccio"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_larbp")

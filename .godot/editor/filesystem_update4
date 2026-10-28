@@ -1,0 +1,6 @@
+res://resources/glow.tres
+res://resources/disc.tres
+res://scenes/Slug.tscn
+res://scenes/main.tscn
+res://scripts/player.gd
+res://scripts/slug.gd
